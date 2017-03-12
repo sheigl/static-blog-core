@@ -61,7 +61,7 @@ gulp.task('typescript', function() {
         }))
         .pipe(gulp.dest(webroot + 'app'));
 });
-gulp.task('wiredep', ['webpack'], function () {
+gulp.task('wiredep', function () {
     var wiredep = require('wiredep').stream;
     var options = {
         bowerJson: bower.json,
