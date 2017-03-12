@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using ServiceStack.Data;
+using ServiceStack.OrmLite;
 
 namespace static_blog_core
 {
@@ -29,6 +31,9 @@ namespace static_blog_core
         {
             // Add framework services.
             services.AddMvc();
+
+            var conn = new OrmLiteConnectionFactory(Configuration["ConnectionStrings:MySqlConnectionString"], MySqlDialect.Provider);
+            services.AddSingleton<IDbConnectionFactory>(conn);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -37,8 +42,9 @@ namespace static_blog_core
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
-            app.UseMvc();
             app.UseMvcWithDefaultRoute();
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
         }
     }
 }
