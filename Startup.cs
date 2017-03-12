@@ -38,6 +38,7 @@ namespace static_blog_core
             loggerFactory.AddDebug();
 
             app.UseMvc();
+            app.UseMvcWithDefaultRoute();
         }
     }
 }
