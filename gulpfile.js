@@ -56,12 +56,13 @@ gulp.task('typescript', function() {
     return gulp.src(ts)
         .pipe($.typescript({
             noImplicitAny: false,
-            module: 'commonjs',
-            target: 'ES5'
+            module: 'system',
+            target: 'ES5',
+            outFile: '/wwwroot/dist/app.js'
         }))
         .pipe(gulp.dest(webroot + 'app'));
 });
-gulp.task('wiredep', function () {
+gulp.task('wiredep', ['typescript'], function () {
     var wiredep = require('wiredep').stream;
     var options = {
         bowerJson: bower.json,
@@ -73,7 +74,7 @@ gulp.task('wiredep', function () {
     return gulp
         .src('./Views/Home/Index.cshtml')
         .pipe(wiredep(options))
-        .pipe($.inject(gulp.src(/*js*/webroot + 'js/*.js', { read: false }), { ignorePath: '/wwwroot/', addRootSlash: false }))
+        .pipe($.inject(gulp.src('./wwwroot/dist/app.js', { read: false }), { ignorePath: '/wwwroot/', addRootSlash: false }))
         .pipe($.inject(gulp.src(css, { read: false }), { ignorePath: '/wwwroot/', addRootSlash: false }))
         .pipe(gulp.dest('./Views/Home/'));
 });
