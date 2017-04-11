@@ -15,20 +15,21 @@ var app;
 })(app || (app = {}));
 var app;
 (function (app) {
-    angular.module('app.services', []);
+    angular.module('app.widgets', []);
 })(app || (app = {}));
 var app;
 (function (app) {
-    angular.module('app.widgets', []);
+    angular.module('app.services', []);
 })(app || (app = {}));
 var app;
 (function (app) {
     angular
         .module('app.core')
         .config(config);
-    config.$inject = ['$routeProvider'];
-    function config($routeProvider) {
+    config.$inject = ['$routeProvider', '$locationProvider'];
+    function config($routeProvider, $locationProvider) {
         $routeProvider
             .otherwise('/');
+        $locationProvider.hashPrefix('');
     }
 })(app || (app = {}));

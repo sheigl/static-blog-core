@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <base href="/">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>StaticBlog</title>    
+    <link href="lib/semantic/dist/semantic.min.css" rel="stylesheet" />
+    <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <!-- bower:css -->
+    <link rel="stylesheet" href="lib/sweetalert2/dist/sweetalert2.css" />
+    <!-- endbower -->
+    <!-- inject:css -->
+    
+    <link rel="stylesheet" href="css/site.css">
+    
+    <!-- endinject -->
+</head>
+<body>
+    <div class="ui secondary pointing menu">
+        <a href="#/" class="active item">
+            Home
+        </a>
+        <a href="#/menu1" class="item">
+            menu1
+        </a>
+        <div class="right menu">
+            <a class="ui item">
+                Logout
+            </a>
+        </div>
+    </div>
+
+    @RenderBody()
+
+    <!-- bower:js -->
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular-route/angular-route.js"></script>
+    <script src="lib/jquery/dist/jquery.js"></script>
+    <script src="lib/semantic/dist/semantic.js"></script>
+    <script src="lib/es6-promise/es6-promise.js"></script>
+    <script src="lib/sweetalert2/dist/sweetalert2.js"></script>
+    <!-- endbower -->
+    <!-- inject:js -->        
+    <script src="dist/app.js"></script>        
+    <!-- endinject -->
+</body>
+</html>
